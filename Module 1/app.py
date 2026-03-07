@@ -15,5 +15,8 @@ with sync_playwright() as p:
 
     # Locate a Link Element
     docs_btn= page.get_by_role("link", name="Docs").click()
+
+    # Get the url
+    print("Docs URL: ", page.url)
     # close the browser
     browser.close()
