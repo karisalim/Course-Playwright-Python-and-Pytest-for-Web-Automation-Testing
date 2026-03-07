@@ -25,6 +25,7 @@ with sync_playwright() as p:
 
     #highlight the check_box
     check_box.highlight()
+    check_box.check()
 
     # Click the element
     # btn.click()
