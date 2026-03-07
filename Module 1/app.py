@@ -12,5 +12,8 @@ with sync_playwright() as p:
     page.goto("https://playwright.dev/python/")
     # take a screenshot
     page.screenshot(path="playwright.png")
+
+    # Locate a Link Element
+    docs_btn= page.get_by_role("link", name="Docs").click()
     # close the browser
     browser.close()
