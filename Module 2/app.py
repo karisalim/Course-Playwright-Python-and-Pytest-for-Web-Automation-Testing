@@ -38,15 +38,20 @@ with sync_playwright() as p:
     # # get by placeholder
     # page.get_by_placeholder("Enter email").highlight()
 
-    print("--"*20) ## video locator-text
+    # print("--"*20) ## video locator-text
 
-    page.get_by_text("with faded secondary").highlight()
+    # page.get_by_text("with faded secondary").highlight()
 
-    # exact false will match the text if it contains the text كدا يقدر يلاقي التكست حتى لو كان فيه حاجات تانية معاه
-    page.get_by_text("Cum sociis natoque", exact=False).highlight() 
+    # # exact false will match the text if it contains the text كدا يقدر يلاقي التكست حتى لو كان فيه حاجات تانية معاه
+    # page.get_by_text("Cum sociis natoque", exact=False).highlight() 
 
-    # exact true will match the text if it is exactly the same as the text كدا يقدر يلاقي التكست بس لو كان هو بالظبط كدا مش لو فيه حاجات تانية معاه
-    page.get_by_text("parturient montes", exact=True).highlight()
+    # # exact true will match the text if it is exactly the same as the text كدا يقدر يلاقي التكست بس لو كان هو بالظبط كدا مش لو فيه حاجات تانية معاه
+    # page.get_by_text("parturient montes", exact=True).highlight()
+
+    print("--"*20) ## video locator-title
+
+    page.get_by_title("attribute")
+
 
 
     # close the browser
