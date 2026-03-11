@@ -50,7 +50,8 @@ with sync_playwright() as p:
 
     print("--"*20) ## video locator-title
 
-    page.get_by_title("attribute")
+    page.locator("css=h1").highlight()
+    page.locator("footer").highlight()
 
 
 
