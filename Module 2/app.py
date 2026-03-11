@@ -48,10 +48,16 @@ with sync_playwright() as p:
     # # exact true will match the text if it is exactly the same as the text كدا يقدر يلاقي التكست بس لو كان هو بالظبط كدا مش لو فيه حاجات تانية معاه
     # page.get_by_text("parturient montes", exact=True).highlight()
 
-    print("--"*20) ## video locator-title
+    # print("--"*20) ## video locator-title
 
-    page.get_by_title("attribute")
+    # page.get_by_title("attribute")
 
+
+    print("--"*20) ## video Locating with CSS Selectors
+
+
+    # page.locator("css=h1").highlight()
+    page.locator("footer").highlight()
 
 
     # close the browser
