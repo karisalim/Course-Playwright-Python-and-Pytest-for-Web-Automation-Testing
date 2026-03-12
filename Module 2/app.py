@@ -67,6 +67,12 @@ with sync_playwright() as p:
     # Using a CSS selector (id) to locate the button element
     page.locator("button#btnGroupDrop1").click()
     
+    # Using a CSS selector (tag + class + id) to locate the button element
+    page.locator("input[readonly]").highlight()
+    
+    # Using a CSS selector (attribute) to locate the button element   
+    page.locator("input[value='correct value']").highlight()
+    
     page.pause()
 
 
