@@ -61,8 +61,13 @@ with sync_playwright() as p:
     
     # Using a CSS selector (tag + class) to locate the button element
 
-    page.locator("button.btn-outline-success").highlight()
-    page.locator("button.btn-outline-success").click()
+    # page.locator("button.btn-outline-success").highlight()
+    # page.locator("button.btn-outline-success").click()
+    
+    # Using a CSS selector (id) to locate the button element
+    page.locator("button#btnGroupDrop1").click()
+    
+    page.pause()
 
 
     # close the browser
