@@ -65,15 +65,29 @@ with sync_playwright() as p:
     # page.locator("button.btn-outline-success").click()
     
     # Using a CSS selector (id) to locate the button element
-    page.locator("button#btnGroupDrop1").click()
+    # page.locator("button#btnGroupDrop1").click()
     
-    # Using a CSS selector (tag + class + id) to locate the button element
-    page.locator("input[readonly]").highlight()
+    # # Using a CSS selector (tag + class + id) to locate the button element
+    # page.locator("input[readonly]").highlight()
     
-    # Using a CSS selector (attribute) to locate the button element   
-    page.locator("input[value='correct value']").highlight()
+    # # Using a CSS selector (attribute) to locate the button element   
+    # page.locator("input[value='correct value']").highlight()
+    
+    # page.pause()
+    
+    print("--"*20) ## video CSS Selectors Hierarchy (Parent >> Child) (bg-dark >> nav.bg-dark > nav.bg-dark a.nav-link > nav.bg-dark a.nav-link.active )
+    
+    page.locator("nav.bg-dark a.nav-link.active").highlight() # parent
     
     page.pause()
+    
+    # Direct Child Selector
+    
+
+
+    
+    
+    
 
 
     # close the browser
