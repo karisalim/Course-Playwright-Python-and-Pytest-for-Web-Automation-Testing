@@ -57,7 +57,12 @@ with sync_playwright() as p:
 
 
     # page.locator("css=h1").highlight()
-    page.locator("footer").highlight()
+    # page.locator("footer").highlight()
+    
+    # Using a CSS selector (tag + class) to locate the button element
+
+    page.locator("button.btn-outline-success").highlight()
+    page.locator("button.btn-outline-success").click()
 
 
     # close the browser
