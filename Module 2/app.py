@@ -81,7 +81,9 @@ with sync_playwright() as p:
     
     page.pause()
     
-    # Direct Child Selector
+    # Direct Child Selector (>) will select only the direct child elements of the parent element. It will not select the child elements of the child elements.
+    
+    page.locator("div.bs-component > ul.list-group").highlight()
     
 
 
