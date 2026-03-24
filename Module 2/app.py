@@ -75,44 +75,49 @@ with sync_playwright() as p:
     
     # page.pause()
     
-    print("--"*20) ## video CSS Selectors Hierarchy (Parent >> Child) (bg-dark >> nav.bg-dark > nav.bg-dark a.nav-link > nav.bg-dark a.nav-link.active )
+    # print("--"*20) ## video CSS Selectors Hierarchy (Parent >> Child) (bg-dark >> nav.bg-dark > nav.bg-dark a.nav-link > nav.bg-dark a.nav-link.active )
     
-    page.locator("nav.bg-dark a.nav-link.active").highlight() # parent
+    # page.locator("nav.bg-dark a.nav-link.active").highlight() # parent
     
-    page.pause()
+    # page.pause()
     
-    # Direct Child Selector (>) will select only the direct child elements of the parent element. It will not select the child elements of the child elements.
+    # # Direct Child Selector (>) will select only the direct child elements of the parent element. It will not select the child elements of the child elements.
     
-    page.locator("div.bs-component > ul.list-group").highlight()
+    # page.locator("div.bs-component > ul.list-group").highlight()
 
     
     print("--"*20) ## video CSS Selectors Pseudo Classes
-
-    # Pesudo Class is same funcation additional selector but it is used to select the elements based on their state or position in the DOM. It is used with the colon (:) symbol.
-    ## 📌 القاعدة
-    # 
-    # tag : pseudo_class ( 'argument' )
-    # ↑  ↑      ↑              ↑
-    # h1  :    text         'Navbars'
-
-    page.locator("h1:text('Navbars')").highlight()
-
-    # هيختار كل H1 فيها كلمة nav في أي حتة
-    page.locator("h1:text('nav')")
+'''
+    Pesudo Class is same funcation additional selector but it is used to select the elements based on their state or position in the DOM. It is used with the colon (:) symbol.
+    # 📌 القاعدة
     
-    #  هيختار H1 نصها بالظبط "Navs" بس    ( :text-is() — اختيار بالنص (Strict))
-    page.locator("h1:text-is('Navs')").highlight()
-
-    # 3️⃣ :visible — اختيار العناصر الظاهرة بس   (لو عندك عنصر بيظهر ويتخفى (زي Dropdown)، تقدر تختار اللي شايفه بس على الشاشة. )
-    page.locator("div.dropdown-menu:visible").highlight()
-
-    # 4️⃣ :nth-match() — اختيار عنصر بالرقم (Position)  (لو عندك 77 button بنفس الـ class، تقدر تختار الرابع بالظبط.)
-    #  الصيغة: :nth-match(selector, number)
-    page.locator("button.btn-primary").highlight() # >> 77 button
-
-    page.locator(":nth-match(button.btn-primary, 5)").highlight() # >> 5th button
+    tag : pseudo_class ( 'argument' )
+    ↑  ↑      ↑              ↑
+    h1  :    text         'Navbars'
 
     '''
+
+    # page.locator("h1:text('Navbars')").highlight()
+
+    # # هيختار كل H1 فيها كلمة nav في أي حتة
+    # page.locator("h1:text('nav')")
+    
+    # #  هيختار H1 نصها بالظبط "Navs" بس    ( :text-is() — اختيار بالنص (Strict))
+    # page.locator("h1:text-is('Navs')").highlight()
+
+    # # 3️⃣ :visible — اختيار العناصر الظاهرة بس   (لو عندك عنصر بيظهر ويتخفى (زي Dropdown)، تقدر تختار اللي شايفه بس على الشاشة. )
+    # page.locator("div.dropdown-menu:visible").highlight()
+
+    # # 4️⃣ :nth-match() — اختيار عنصر بالرقم (Position)  (لو عندك 77 button بنفس الـ class، تقدر تختار الرابع بالظبط.)
+    # #  الصيغة: :nth-match(selector, number)
+    # page.locator("button.btn-primary").highlight() # >> 77 button
+
+    # page.locator(":nth-match(button.btn-primary, 5)").highlight() # >> 5th button
+
+    # page.locator(":nth-match(button:text('Primary'), 1)").highlight()
+    
+
+'''
     ==============================================
     Pseudo Classes في Playwright - ملخص الدرس
     ==============================================
@@ -172,4 +177,4 @@ with sync_playwright() as p:
 
 
     # close the browser
-    browser.close()
+browser.close()
