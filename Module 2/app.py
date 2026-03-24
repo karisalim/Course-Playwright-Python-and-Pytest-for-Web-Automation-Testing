@@ -84,7 +84,86 @@ with sync_playwright() as p:
     # Direct Child Selector (>) will select only the direct child elements of the parent element. It will not select the child elements of the child elements.
     
     page.locator("div.bs-component > ul.list-group").highlight()
+
     
+    print("--"*20) ## video CSS Selectors Pseudo Classes
+
+    # Pesudo Class is same funcation additional selector but it is used to select the elements based on their state or position in the DOM. It is used with the colon (:) symbol.
+    ## 📌 القاعدة
+    # 
+    # tag : pseudo_class ( 'argument' )
+    # ↑  ↑      ↑              ↑
+    # h1  :    text         'Navbars'
+
+    page.locator("h1:text('Navbars')").highlight()
+
+    # هيختار كل H1 فيها كلمة nav في أي حتة
+    page.locator("h1:text('nav')")
+    
+    #  هيختار H1 نصها بالظبط "Navs" بس    ( :text-is() — اختيار بالنص (Strict))
+    page.locator("h1:text-is('Navs')").highlight()
+
+    # 3️⃣ :visible — اختيار العناصر الظاهرة بس   (لو عندك عنصر بيظهر ويتخفى (زي Dropdown)، تقدر تختار اللي شايفه بس على الشاشة. )
+    page.locator("div.dropdown-menu:visible").highlight()
+
+    # 4️⃣ :nth-match() — اختيار عنصر بالرقم (Position)  (لو عندك 77 button بنفس الـ class، تقدر تختار الرابع بالظبط.)
+    #  الصيغة: :nth-match(selector, number)
+    page.locator("button.btn-primary").highlight() # >> 77 button
+
+    page.locator(":nth-match(button.btn-primary, 5)").highlight() # >> 5th button
+
+    '''
+    ==============================================
+    Pseudo Classes في Playwright - ملخص الدرس
+    ==============================================
+
+    1️⃣  :text('...') — بحث بالنص (Loose)
+        بيختار أي عنصر يحتوي على النص، مش لازم بالظبط
+        مثال: page.locator("h1:text('nav')")
+        ✅ هيختار: "navbar" / "navigation" / "navbars"
+
+    ---------------------------------------------
+
+    2️⃣  :text-is('...') — بحث بالنص (Strict)
+        بيختار العنصر اللي نصه بالظبط زي اللي كتبته
+        مثال: page.locator("h1:text-is('Navbars')")
+        ❌ مش هيختار: "nav" / "navbar"
+        ✅ هيختار: "Navbars" بس
+
+    ---------------------------------------------
+
+    3️⃣  :visible — اختيار العناصر الظاهرة بس
+        لو عندك عناصر بتظهر وتتخفى (Dropdowns / Modals)
+        بيختار اللي ظاهر على الشاشة بس
+        مثال: page.locator("div.dropdown-menu:visible")
+
+    ---------------------------------------------
+
+    4️⃣  :nth-match(selector, n) — اختيار بالرقم
+        بيختار العنصر رقم n من مجموعة عناصر متشابهة
+        ⚠️  لازم تبدأ بـ : من غير selector قبلها
+        ⚠️  بتاخد argumentين: السيليكتور والرقم
+
+        ❌ غلط: page.locator("button.btn-primary:nth-match(1)")
+        ✅ صح:  page.locator(":nth-match(button.btn-primary, 1)")
+
+        وتقدر تركب pseudo classes جوا بعض:
+        مثال: page.locator(":nth-match(button:text('primary'), 3)")
+
+    ==============================================
+    ⚡ القاعدة العامة للـ Pseudo Class
+    ==============================================
+
+        tag:pseudo_class('argument')
+        ↑  ↑     ↑           ↑
+        h1  :    text        'nav'
+
+    الـ colon : هو اللي بيفصل التاج عن الـ pseudo class
+
+    ==============================================
+'''
+
+
 
 
     
