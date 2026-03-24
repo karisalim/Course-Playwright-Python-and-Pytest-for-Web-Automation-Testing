@@ -220,8 +220,43 @@ with sync_playwright() as p:
 
     print("--"*20) # video XPath Functions
 
-    # 1️⃣ text() — اختيار بالنص (Exact/Strict) 
-    page.locator("//h1[text()='Heading 1']").highlight() # هيختار H1 نصه بالظبط "Heading 1" بس
+    # # 1️⃣ text() — اختيار بالنص (Exact/Strict) 
+    # page.locator("//h1[text()='Heading 1']").highlight() # هيختار H1 نصه بالظبط "Heading 1" بس
+
+    # # 2️⃣    contains() — بحث جزئي (Loose)  here I can use anything like a properties or an attributes value as well  بتاخد argumentين:  >>>   () 
+    #     # 1. الحاجة اللي هتدور فيها
+    #     # 2. النص اللي بتدور عليه
+    #     # # الصيغة: //tag[contains(what, 'value')]
+
+    # page.locator("//h1[contains(text(),'Head')]").highlight() # >> Heading 1 
+    # #                            ↑        ↑
+    # #                        دور في النص  اللي فيه "Head" 
+
+    # page.locator("//button[contains(@class,'btn-outline-primary')]").highlight()
+
+    #                              ↑         ↑
+    #                          دور في الـ value  اللي فيه "correct"
+    
+    ## 📌 القاعدة العامة
+    '''
+    //tag [ contains( what , 'text' ) ]
+            ↑          ↑       ↑
+        function    فين هتدور , إيه اللي بتدور عليه
+
+    # "what" ممكن يكون:
+    text()     → النص اللي جوا العنصر
+    @class     → قيمة الـ class
+    @value     → قيمة الـ value
+    @placeholder → قيمة الـ placeholder
+    @id        → قيمة الـ id
+    @href      → قيمة الـ href
+    '''
+
+
+
+
+
+
 
 
 
