@@ -4,7 +4,7 @@ from playwright.sync_api import sync_playwright
 with sync_playwright() as p:
     # launch a browser
     browser = p.chromium.launch(headless=False,
-        slow_mo=8000)
+        slow_mo=500)
     
     # create open a new page
     page = browser.new_page()
@@ -167,6 +167,59 @@ with sync_playwright() as p:
 
     ==============================================
     '''
+
+    print("--"*20) ## video Locators XPath (XML Path Language) >>  لغة استعلام اتعملت أصلاً عشان تختار عناصر في XML، وبتشتغل على HTML كمان. أقوى من CSS في بعض الحالات بس شوية أصعب في الكتابة.
+
+    '''
+    1️⃣ الـ Absolute Path (المسار الكامل)
+    بتبدأ من أول الصفحة وتنزل خطوة خطوة.
+    /html/head/title
+
+    page.locator("/html/head/title").highlight()
+    #     ↑        ↑     ↑      ↑
+    #  slash    html   head   title
+    # (يعني ابدأ من الأول)
+
+    2️⃣ الـ Relative Path (المسار النسبي)
+    بتبدأ بـ // يعني "دور في أي حتة في الصفحة"
+
+    / يعني "ابدأ من الأول"
+    // يعني "دور في أي حتة في الصفحة"
+    '''
+ 
+    # ✅ هيلاقي كل H1 في الصفحة كلها (12 عنصر) 
+    page.locator("xpath=//h1").highlight() 
+
+    '''
+    3️⃣ الاختيار بالـ Attribute
+    بتحط الـ attribute جوا [] وقبل اسمه @
+    //tag[@attribute='value']
+    '''
+    page.locator("//h1[@id='navbars']").highlight() # or write this >> page.locator("xpath=//h1[@id='navbars']").highlight()
+    #               ↑   ↑       ↑
+    #              tag  @id   'القيمة'
+
+    page.locator("//input[@readonly]").highlight() # or write this >> page.locator("xpath=//input[@readonly]").highlight()
+    
+    '''
+    📌 ملخص سريع (XPath)
+
+    الموضوع                الصيغة                         مثال
+    ---------------------------------------------------------------------
+    Absolute Path           /html/...                      /html/body/div/h1
+    (من أول الصفحة)
+
+    Relative Path           //tag                          //h1
+    (يدور في أي مكان)
+
+    By Attribute            //tag[@attr='value']           //h1[@id='navbars']
+
+    Attribute بدون قيمة    //tag[@attr]                  //input[@readonly]
+    '''
+    
+
+
+
 
 
 
