@@ -252,12 +252,55 @@ with sync_playwright() as p:
     @href      → قيمة الـ href
     '''
 
+    print("--"*20) # video Other Locators Miscellaneous Selectors — الـ 
 
+    # 1️⃣ nth() — اختيار بالرقم
+        # بتختار عنصر معين من مجموعة بالـ index (بيبدأ من 0).
 
+    page.get_by_role("button", name="primary").highlight() # return 4 elements
+    page.get_by_role("button", name="primary").nth(1).highlight() # return 2rd element
+    #                                           ↑
+    #                                     index=1 يعني التاني
 
+    # 2️⃣ .. — اختيار الـ Parent
 
+    # اختار الـ input الأول
+    page.get_by_label("Email address").highlight()
 
+    # دلوقتي اختار الـ div اللي فيه الـ input ده
+    page.get_by_label("Email address").locator("..").highlight()
+    #                                           ↑
+    #                                     روح للـ parent
 
+    # 3️⃣ id= — اختيار بالـ ID مباشرة  من غير CSS أو XPath.
+    page.locator("id=btnGroupDrop1").highlight()
+    #  أبسط من: page.locator("#btnGroupDrop1")
+
+    # 4️⃣ visible=true/false — اختيار العناصر الظاهرة أو المخفية
+    page.locator("div.dropdown-menu").locator("visible=true").highlight()
+    
+    page.locator("div.dropdown-menu").locator("visible=false").highlight()
+
+    # 5️⃣ filter() — فلترة النتائج     🔹 فلترة بالنص has_text
+
+    page.get_by_role("heading").highlight() # >> 69 elements
+
+    page.get_by_role("heading").filter(has_text="Heading").highlight() # >> 7 element
+
+    #                                   ↑
+    #                                   has_text بيدور على النص جوا العنصر
+
+    page.get_by_role("heading").filter(has_text="Heading 1").highlight() # >> 1 element
+
+    # اختار كل الـ form-groups (17 عنصر)
+    page.locator("div.form-group").highlight()
+
+    # فلتر: اختار بس الـ form-group اللي فيها password input
+    page.locator("div.form-group").filter(
+        has=page.get_by_label("Password")
+    ).highlight()
+    #    ↑
+    # has بيشوف لو العنصر ده فيه الـ locator ده جوا
 
 
     # close the browser
