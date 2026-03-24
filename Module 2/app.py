@@ -187,19 +187,19 @@ with sync_playwright() as p:
     // يعني "دور في أي حتة في الصفحة"
     '''
  
-    # ✅ هيلاقي كل H1 في الصفحة كلها (12 عنصر) 
-    page.locator("xpath=//h1").highlight() 
+    # # ✅ هيلاقي كل H1 في الصفحة كلها (12 عنصر) 
+    # page.locator("xpath=//h1").highlight() 
 
-    '''
-    3️⃣ الاختيار بالـ Attribute
-    بتحط الـ attribute جوا [] وقبل اسمه @
-    //tag[@attribute='value']
-    '''
-    page.locator("//h1[@id='navbars']").highlight() # or write this >> page.locator("xpath=//h1[@id='navbars']").highlight()
-    #               ↑   ↑       ↑
-    #              tag  @id   'القيمة'
+    # '''
+    # 3️⃣ الاختيار بالـ Attribute
+    # بتحط الـ attribute جوا [] وقبل اسمه @
+    # //tag[@attribute='value']
+    # '''
+    # page.locator("//h1[@id='navbars']").highlight() # or write this >> page.locator("xpath=//h1[@id='navbars']").highlight()
+    # #               ↑   ↑       ↑
+    # #              tag  @id   'القيمة'
 
-    page.locator("//input[@readonly]").highlight() # or write this >> page.locator("xpath=//input[@readonly]").highlight()
+    # page.locator("//input[@readonly]").highlight() # or write this >> page.locator("xpath=//input[@readonly]").highlight()
     
     '''
     📌 ملخص سريع (XPath)
@@ -218,8 +218,10 @@ with sync_playwright() as p:
     '''
     
 
+    print("--"*20) # video XPath Functions
 
-
+    # 1️⃣ text() — اختيار بالنص (Exact/Strict) 
+    page.locator("//h1[text()='Heading 1']").highlight() # هيختار H1 نصه بالظبط "Heading 1" بس
 
 
 
