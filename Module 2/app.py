@@ -87,7 +87,7 @@ with sync_playwright() as p:
 
     
     print("--"*20) ## video CSS Selectors Pseudo Classes
-'''
+    '''
     Pesudo Class is same funcation additional selector but it is used to select the elements based on their state or position in the DOM. It is used with the colon (:) symbol.
     # 📌 القاعدة
     
@@ -117,7 +117,7 @@ with sync_playwright() as p:
     # page.locator(":nth-match(button:text('Primary'), 1)").highlight()
     
 
-'''
+    '''
     ==============================================
     Pseudo Classes في Playwright - ملخص الدرس
     ==============================================
@@ -166,15 +166,9 @@ with sync_playwright() as p:
     الـ colon : هو اللي بيفصل التاج عن الـ pseudo class
 
     ==============================================
-'''
+    '''
 
-
-
-
-    
-    
-    
 
 
     # close the browser
-browser.close()
+    browser.close()
